@@ -1,0 +1,581 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8474DC8B208459560035855D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474DC8A208459560035855D /* AppDelegate.swift */; };
+		8474DC8D208459560035855D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474DC8C208459560035855D /* ViewController.swift */; };
+		8474DC90208459560035855D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8474DC8E208459560035855D /* Main.storyboard */; };
+		8474DC92208459570035855D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8474DC91208459570035855D /* Assets.xcassets */; };
+		8474DC95208459570035855D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8474DC93208459570035855D /* LaunchScreen.storyboard */; };
+		8474DCA0208459570035855D /* SwiftHTTPManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474DC9F208459570035855D /* SwiftHTTPManagerTests.swift */; };
+		8474DCB2208459A80035855D /* Alamofire+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474DCAB208459A80035855D /* Alamofire+Custom.swift */; };
+		8474DCB4208459A80035855D /* RxHttpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474DCAD208459A80035855D /* RxHttpManager.swift */; };
+		8474DCB6208459A80035855D /* HttpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474DCAF208459A80035855D /* HttpManager.swift */; };
+		8474DCB7208459A80035855D /* ApiRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474DCB0208459A80035855D /* ApiRouter.swift */; };
+		8474DCB8208459A80035855D /* Routerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474DCB1208459A80035855D /* Routerable.swift */; };
+		D8D58BDFA4D6093AEAB5BBC8 /* Pods_SwiftHTTPManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A4E46407F4A3B074E79B654 /* Pods_SwiftHTTPManager.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8474DC9C208459570035855D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8474DC7F208459560035855D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8474DC86208459560035855D;
+			remoteInfo = SwiftHTTPManager;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3A4E46407F4A3B074E79B654 /* Pods_SwiftHTTPManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftHTTPManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		56233B4AF82C1D762E49E8F9 /* Pods-SwiftHTTPManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftHTTPManager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftHTTPManager/Pods-SwiftHTTPManager.debug.xcconfig"; sourceTree = "<group>"; };
+		8474DC87208459560035855D /* SwiftHTTPManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftHTTPManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8474DC8A208459560035855D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8474DC8C208459560035855D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8474DC8F208459560035855D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8474DC91208459570035855D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8474DC94208459570035855D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8474DC96208459570035855D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8474DC9B208459570035855D /* SwiftHTTPManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftHTTPManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8474DC9F208459570035855D /* SwiftHTTPManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftHTTPManagerTests.swift; sourceTree = "<group>"; };
+		8474DCA1208459570035855D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8474DCAB208459A80035855D /* Alamofire+Custom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire+Custom.swift"; sourceTree = "<group>"; };
+		8474DCAD208459A80035855D /* RxHttpManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxHttpManager.swift; sourceTree = "<group>"; };
+		8474DCAF208459A80035855D /* HttpManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpManager.swift; sourceTree = "<group>"; };
+		8474DCB0208459A80035855D /* ApiRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiRouter.swift; sourceTree = "<group>"; };
+		8474DCB1208459A80035855D /* Routerable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routerable.swift; sourceTree = "<group>"; };
+		997F40EB80107EF6147EB2A3 /* Pods-SwiftHTTPManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftHTTPManager.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftHTTPManager/Pods-SwiftHTTPManager.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8474DC84208459560035855D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8D58BDFA4D6093AEAB5BBC8 /* Pods_SwiftHTTPManager.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8474DC98208459570035855D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		593DF1B7E391C677BDA04E8A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3A4E46407F4A3B074E79B654 /* Pods_SwiftHTTPManager.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8474DC7E208459560035855D = {
+			isa = PBXGroup;
+			children = (
+				8474DCAA208459860035855D /* NetWork */,
+				8474DC89208459560035855D /* SwiftHTTPManager */,
+				8474DC9E208459570035855D /* SwiftHTTPManagerTests */,
+				8474DC88208459560035855D /* Products */,
+				90B5A70CD7AC701244078125 /* Pods */,
+				593DF1B7E391C677BDA04E8A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		8474DC88208459560035855D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8474DC87208459560035855D /* SwiftHTTPManager.app */,
+				8474DC9B208459570035855D /* SwiftHTTPManagerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8474DC89208459560035855D /* SwiftHTTPManager */ = {
+			isa = PBXGroup;
+			children = (
+				8474DC8A208459560035855D /* AppDelegate.swift */,
+				8474DC8C208459560035855D /* ViewController.swift */,
+				8474DC8E208459560035855D /* Main.storyboard */,
+				8474DC91208459570035855D /* Assets.xcassets */,
+				8474DC93208459570035855D /* LaunchScreen.storyboard */,
+				8474DC96208459570035855D /* Info.plist */,
+			);
+			path = SwiftHTTPManager;
+			sourceTree = "<group>";
+		};
+		8474DC9E208459570035855D /* SwiftHTTPManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				8474DC9F208459570035855D /* SwiftHTTPManagerTests.swift */,
+				8474DCA1208459570035855D /* Info.plist */,
+			);
+			path = SwiftHTTPManagerTests;
+			sourceTree = "<group>";
+		};
+		8474DCAA208459860035855D /* NetWork */ = {
+			isa = PBXGroup;
+			children = (
+				8474DCAB208459A80035855D /* Alamofire+Custom.swift */,
+				8474DCAF208459A80035855D /* HttpManager.swift */,
+				8474DCB1208459A80035855D /* Routerable.swift */,
+				8474DCAD208459A80035855D /* RxHttpManager.swift */,
+				8474DCB0208459A80035855D /* ApiRouter.swift */,
+			);
+			path = NetWork;
+			sourceTree = "<group>";
+		};
+		90B5A70CD7AC701244078125 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				56233B4AF82C1D762E49E8F9 /* Pods-SwiftHTTPManager.debug.xcconfig */,
+				997F40EB80107EF6147EB2A3 /* Pods-SwiftHTTPManager.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8474DC86208459560035855D /* SwiftHTTPManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8474DCA4208459570035855D /* Build configuration list for PBXNativeTarget "SwiftHTTPManager" */;
+			buildPhases = (
+				12056AD3814179C838445C0E /* [CP] Check Pods Manifest.lock */,
+				8474DC83208459560035855D /* Sources */,
+				8474DC84208459560035855D /* Frameworks */,
+				8474DC85208459560035855D /* Resources */,
+				28972FBE983EFA3C33A51B1C /* [CP] Embed Pods Frameworks */,
+				E0E1BD5D517F338B2DD0F56E /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftHTTPManager;
+			productName = SwiftHTTPManager;
+			productReference = 8474DC87208459560035855D /* SwiftHTTPManager.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8474DC9A208459570035855D /* SwiftHTTPManagerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8474DCA7208459570035855D /* Build configuration list for PBXNativeTarget "SwiftHTTPManagerTests" */;
+			buildPhases = (
+				8474DC97208459570035855D /* Sources */,
+				8474DC98208459570035855D /* Frameworks */,
+				8474DC99208459570035855D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8474DC9D208459570035855D /* PBXTargetDependency */,
+			);
+			name = SwiftHTTPManagerTests;
+			productName = SwiftHTTPManagerTests;
+			productReference = 8474DC9B208459570035855D /* SwiftHTTPManagerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8474DC7F208459560035855D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = ma;
+				TargetAttributes = {
+					8474DC86208459560035855D = {
+						CreatedOnToolsVersion = 9.3;
+					};
+					8474DC9A208459570035855D = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = 8474DC86208459560035855D;
+					};
+				};
+			};
+			buildConfigurationList = 8474DC82208459560035855D /* Build configuration list for PBXProject "SwiftHTTPManager" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8474DC7E208459560035855D;
+			productRefGroup = 8474DC88208459560035855D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8474DC86208459560035855D /* SwiftHTTPManager */,
+				8474DC9A208459570035855D /* SwiftHTTPManagerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8474DC85208459560035855D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8474DC95208459570035855D /* LaunchScreen.storyboard in Resources */,
+				8474DC92208459570035855D /* Assets.xcassets in Resources */,
+				8474DC90208459560035855D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8474DC99208459570035855D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		12056AD3814179C838445C0E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SwiftHTTPManager-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		28972FBE983EFA3C33A51B1C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SwiftHTTPManager/Pods-SwiftHTTPManager-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftHTTPManager/Pods-SwiftHTTPManager-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E0E1BD5D517F338B2DD0F56E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftHTTPManager/Pods-SwiftHTTPManager-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8474DC83208459560035855D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8474DC8D208459560035855D /* ViewController.swift in Sources */,
+				8474DCB6208459A80035855D /* HttpManager.swift in Sources */,
+				8474DCB7208459A80035855D /* ApiRouter.swift in Sources */,
+				8474DCB8208459A80035855D /* Routerable.swift in Sources */,
+				8474DCB4208459A80035855D /* RxHttpManager.swift in Sources */,
+				8474DCB2208459A80035855D /* Alamofire+Custom.swift in Sources */,
+				8474DC8B208459560035855D /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8474DC97208459570035855D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8474DCA0208459570035855D /* SwiftHTTPManagerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8474DC9D208459570035855D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8474DC86208459560035855D /* SwiftHTTPManager */;
+			targetProxy = 8474DC9C208459570035855D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8474DC8E208459560035855D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8474DC8F208459560035855D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8474DC93208459570035855D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8474DC94208459570035855D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8474DCA2208459570035855D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8474DCA3208459570035855D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8474DCA5208459570035855D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56233B4AF82C1D762E49E8F9 /* Pods-SwiftHTTPManager.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SwiftHTTPManager/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.feng.SwiftHTTPManager;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8474DCA6208459570035855D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 997F40EB80107EF6147EB2A3 /* Pods-SwiftHTTPManager.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SwiftHTTPManager/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.feng.SwiftHTTPManager;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		8474DCA8208459570035855D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SwiftHTTPManagerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.feng.SwiftHTTPManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftHTTPManager.app/SwiftHTTPManager";
+			};
+			name = Debug;
+		};
+		8474DCA9208459570035855D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SwiftHTTPManagerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.feng.SwiftHTTPManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftHTTPManager.app/SwiftHTTPManager";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8474DC82208459560035855D /* Build configuration list for PBXProject "SwiftHTTPManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8474DCA2208459570035855D /* Debug */,
+				8474DCA3208459570035855D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8474DCA4208459570035855D /* Build configuration list for PBXNativeTarget "SwiftHTTPManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8474DCA5208459570035855D /* Debug */,
+				8474DCA6208459570035855D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8474DCA7208459570035855D /* Build configuration list for PBXNativeTarget "SwiftHTTPManagerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8474DCA8208459570035855D /* Debug */,
+				8474DCA9208459570035855D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8474DC7F208459560035855D /* Project object */;
+}
