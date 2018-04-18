@@ -13,7 +13,6 @@ import SwiftyJSON
 class ViewController: UIViewController {
 
     @IBOutlet weak var contentTextView: UITextView!
-    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,14 +24,14 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
                 self?.contentTextView.text = "\(json)"
             }
-        }).disposed(by: disposeBag)
+        }).dispose()
     }
     @IBAction func commitAction(_ sender: UIButton) {
         ApiRouter.commit(sha: "0f816eedf8d6b7c9a656697e50462145506e48f9").rx_request.showHUD().subscribe(onNext: {[weak self] (json) in
             DispatchQueue.main.async {
                 self?.contentTextView.text = "\(json)"
             }
-        }).disposed(by: disposeBag)
+        }).dispose()
     }
 
     override func didReceiveMemoryWarning() {
