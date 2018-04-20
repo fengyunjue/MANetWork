@@ -93,9 +93,12 @@ extension HttpManager {
         NetworkActivityIndicatorVisible(false)
         print(response.debugDescription)
         if case let .failure(error) = response.result, isShowError{
-            DispatchQueue.main.async {
-                SVProgressHUD.showError(withStatus: error.localizedDescription)
+            if (error as NSError).code != NSURLErrorCancelled {
+                DispatchQueue.main.async {
+                    SVProgressHUD.showError(withStatus: error.localizedDescription)
+                }
             }
+            
         }
     }
 }

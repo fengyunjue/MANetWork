@@ -14,7 +14,7 @@ import SVProgressHUD
 
 extension Routerable {
     var rx_request: Observable<JSON> {
-       return HttpManager.rx_requestResult(self)
+        return HttpManager.rx_requestResult(self)
     }
 }
 
@@ -31,7 +31,7 @@ extension HttpManager {
                 case let .success(value):
                     observer.onNext(value)
                     if isEnd {
-                      observer.onCompleted()
+                        observer.onCompleted()
                     }
                 case let .failure(error):
                     observer.onError(error)
@@ -56,12 +56,19 @@ extension ObservableType {
                     SVProgressHUD.show()
                 }
             })
-            return self.subscribe({ event in
-                    isEnd = true
-                    // hideHUD
-                    DispatchQueue.main.async {
-                        SVProgressHUD.dismiss()
-                    }
+            
+            let end = {
+                isEnd = true
+                // hideHUD
+                DispatchQueue.main.async {
+                    SVProgressHUD.dismiss()
+                }
+            }
+            
+            return self.do(onDispose: {
+                end()
+            }).subscribe({ event in
+                end()
                 observer.on(event)
             })
         }
