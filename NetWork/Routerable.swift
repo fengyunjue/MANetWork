@@ -27,27 +27,27 @@ public protocol Routerable{
 // MARK: - 验证相关的信息
 extension Routerable {
     /// baseURL
-    var baseURL: String? {
+    public var baseURL: String? {
         return nil
     }
     /// 通用参数
-    var defaultParameters: RouterParam {
+    public var defaultParameters: RouterParam {
         return [:]
     }
     /// url
-    public var url: String {
+    var url: String {
         return "\(baseURL ?? "")/\(http.0)"
     }
     /// method
-    public var method: HTTPMethod {
+    var method: HTTPMethod {
         return http.1
     }
     /// parameters
-    public var parameters: RouterParam {
-        return http.2
+    var parameters: RouterParam {
+        return defaultParameters.merging(http.2, uniquingKeysWith: {return $1})
     }
     /// 是否使用缓存
-    public var useCache: Bool {
+    var useCache: Bool {
         return http.3
     }
     //    var fileName: String{
