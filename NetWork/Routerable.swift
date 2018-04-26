@@ -17,46 +17,37 @@ public typealias RouterMethod = HTTPMethod
 public protocol Routerable{
     // url, method, param, useCache
     var http : (String, RouterMethod, RouterParam, Bool) {get}
+    var baseURL: String? {get}
+    var headerFields: [String: String] {get}
 }
 
 // MARK: - 验证相关的信息
 extension Routerable {
-    public var baseURL: String {
-        return (UserDefaults.standard.value(forKey: "hostName")) as? String  ?? ""
+    /// baseURL
+    public var baseURL: String? {
+        return nil
     }
     /// url
     public var url: String {
-        return "\(baseURL)/\(http.0)"
+        return "\(baseURL ?? "")/\(http.0)"
     }
     /// method
     public var method: HTTPMethod {
         return http.1
     }
+    /// parameters
+    public var parameters: RouterParam {
+        return http.2
+    }
     /// 是否使用缓存
     public var useCache: Bool {
         return http.3
     }
-    /// header
-    public var headerFields: [String: String]{
-        var header: [String:String] = [:]
-        
-        header["version"] = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
-        header["type"] = "ios"
-        header["Content-Type"] = "application/json"
-        return header
-    }
-    /// parameters
-    public var parameters: Parameters {
-        var newParams: Parameters = self.http.2
-        //添加服务器版本
-        newParams["version"] = "1.9"
-        return newParams
-    }
-    var fileName: String{
-        let l =  URL.init(string: url)!
-        let fileName = (l.query != nil ? (l.query!.split(separator: "=").last.map(String.init)!) : l.lastPathComponent) + ".json"
-        return fileName
-    }
+    //    var fileName: String{
+    //        let l =  URL.init(string: url)!
+    //        let fileName = (l.query != nil ? (l.query!.split(separator: "=").last.map(String.init)!) : l.lastPathComponent) + ".json"
+    //        return fileName
+    //    }
 }
 
 extension Routerable {
@@ -69,3 +60,4 @@ extension Routerable {
         return HttpManager.request(router: self, queue: queue, isShowError: isShowError, completionHandler: completionHandler)
     }
 }
+
