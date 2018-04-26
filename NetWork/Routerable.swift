@@ -17,15 +17,22 @@ public typealias RouterMethod = HTTPMethod
 public protocol Routerable{
     // url, method, param, useCache
     var http : (String, RouterMethod, RouterParam, Bool) {get}
-    var baseURL: String? {get}
     var headerFields: [String: String] {get}
+    
+    // Optional
+    var baseURL: String? {get}
+    var defaultParameters: RouterParam {get}
 }
 
 // MARK: - 验证相关的信息
 extension Routerable {
     /// baseURL
-    public var baseURL: String? {
+    var baseURL: String? {
         return nil
+    }
+    /// 通用参数
+    var defaultParameters: RouterParam {
+        return [:]
     }
     /// url
     public var url: String {
