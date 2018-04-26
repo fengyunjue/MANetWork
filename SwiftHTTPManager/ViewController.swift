@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import SwiftyJSON
+//import MANetWork
 
 class ViewController: UIViewController {
 
@@ -30,6 +31,7 @@ class ViewController: UIViewController {
     @IBAction func commitAction(_ sender: UIButton) {
         ApiRouter.commit(sha: "0f816eedf8d6b7c9a656697e50462145506e48f9").rx_request.showHUD().subscribe(onNext: {[weak self] (json) in
             DispatchQueue.main.async {
+                print("-----------")
                 self?.contentTextView.text = "\(json)"
             }
         }).disposed(by: disposeBag)

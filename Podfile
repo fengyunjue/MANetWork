@@ -6,10 +6,11 @@ use_frameworks!
 
 target 'SwiftHTTPManager' do
 
-    pod 'Alamofire'
-    pod 'SwiftyJSON'
-    pod 'SVProgressHUD'
-    pod 'RxSwift', :inhibit_warnings => true
+    pod 'MANetWork', :path => '.'
+    #pod 'Alamofire'
+    #pod 'SwiftyJSON'
+    #pod 'SVProgressHUD'
+    #pod 'RxSwift', :inhibit_warnings => true
 end
 
 post_install do |installer|

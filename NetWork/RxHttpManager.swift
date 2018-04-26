@@ -12,8 +12,8 @@ import SwiftyJSON
 import Alamofire
 import SVProgressHUD
 
-extension Routerable {
-    var rx_request: Observable<JSON> {
+public extension Routerable {
+    public var rx_request: Observable<JSON> {
         return HttpManager.rx_requestResult(self)
     }
 }
@@ -24,7 +24,7 @@ extension HttpManager {
     ///
     /// - Parameter router: 路由地址
     /// - Returns: 回调
-    static func rx_requestResult(_ router: Routerable, isShowError: Bool = true) -> Observable<JSON>{
+    public static func rx_requestResult(_ router: Routerable, isShowError: Bool = true) -> Observable<JSON>{
         return Observable.create({observer -> Disposable in
             let request = HttpManager.requestResult(router: router, completionHandler: { result, isEnd in
                 switch result {
@@ -47,7 +47,7 @@ extension HttpManager {
 // MARK: - 添加新的Observable类型
 extension ObservableType {
     /// 显示HUD
-    func showHUD() -> Observable<Self.E> {
+    public func showHUD() -> Observable<Self.E> {
         return Observable.create { observer in
             var isEnd = false
             // showHUD
@@ -106,7 +106,7 @@ extension ObservableType {
     
     
     /// 网络请求
-    func httpRequest(_ router: Routerable) -> Observable<JSON>{
+    public func httpRequest(_ router: Routerable) -> Observable<JSON>{
         return Observable.create({ observer -> Disposable in
             var request: DataRequest? = nil
             let dispose = self.subscribe({ event in

@@ -17,14 +17,18 @@ public final class HttpManager{
     // 创建单例
     static let shared = HttpManager()
     // 缓存
-    let urlCache = URLCache.init(memoryCapacity: 4*1024*1024, diskCapacity: 20*1024*1024, diskPath: nil)
+    public let urlCache = URLCache.init(memoryCapacity: 4*1024*1024, diskCapacity: 20*1024*1024, diskPath: nil)
     
-    lazy var alamofireManager: SessionManager = {
+    public lazy var alamofireManager: SessionManager = {
         let config = URLSessionConfiguration.default
         config.timeoutIntervalForRequest = 30
         let session = SessionManager(configuration: config)
         return session
     }()
+    
+    public var httpPlugins:[HttpPlugin] = [NetworkIndicatorPlugin()]
+    
+    public static var openLog: Bool = false
 }
 // MARK: - 基本网络请求
 extension HttpManager{
@@ -57,15 +61,15 @@ extension HttpManager{
         if router.useCache {// 如果使用cache
             newQueue.asyncAfter(deadline: DispatchTime.now() + 0.4, execute: {
                 if isEnd == false, let dataResponse = request.cacheRequest(router: router) {
-                    print("*******\(router.url)使用缓存*******")
+                    Log("*******\(router.url)使用缓存*******")
                     completionHandler(dataResponse, isEnd)
                 }
             })
         }
         
         // 将要发送请求
-        willSend(request)
-        request.responseDict(router: router, queue: newQueue, completionHandler: { response in
+        shared.httpPlugins.forEach { $0.willSend(request) }
+        request.responseDict(router: router, queue: newQueue, completionHandler: {[unowned shared] response in
             // 保存结果
             response.saveCache(router: router)
             // 请求结束
@@ -73,32 +77,47 @@ extension HttpManager{
             // 完成请求返回
             completionHandler(response, isEnd)
             // 接收到服务端的结果
-            didReceive(response, isShowError: isShowError)
+            shared.httpPlugins.forEach{$0.didReceive(response, isShowError: isShowError)}
         })
         return request
     }
 }
-// MARK: - Default处理
-extension HttpManager {
+
+// MARK: - 网络请求插件
+public protocol HttpPlugin {
+    func willSend(_ request: DataRequest)
+    func didReceive(_ response: DataResponse<JSON>, isShowError: Bool)
+}
+
+public class NetworkIndicatorPlugin: HttpPlugin {
     // MARK: - 网络指示器
     private static func NetworkActivityIndicatorVisible(_ isVisible: Bool){
         DispatchQueue.main.async {
             UIApplication.shared.isNetworkActivityIndicatorVisible = isVisible
         }
     }
-    fileprivate static func willSend(_ request: DataRequest) {
-        NetworkActivityIndicatorVisible(true)
+    public func willSend(_ request: DataRequest) {
+        NetworkIndicatorPlugin.NetworkActivityIndicatorVisible(true)
     }
-    fileprivate static func didReceive(_ response: DataResponse<JSON>, isShowError: Bool = true){
-        NetworkActivityIndicatorVisible(false)
-        print(response.debugDescription)
+    public func didReceive(_ response: DataResponse<JSON>, isShowError: Bool = true){
+        NetworkIndicatorPlugin.NetworkActivityIndicatorVisible(false)
+        Log(response.debugDescription)
         if case let .failure(error) = response.result, isShowError{
             if (error as NSError).code != NSURLErrorCancelled {
                 DispatchQueue.main.async {
                     SVProgressHUD.showError(withStatus: error.localizedDescription)
                 }
             }
-            
         }
     }
+}
+func Log(_ item: () -> Any) {
+    #if DEBUG
+    if HttpManager.openLog {
+        print(item())
+    }
+    #endif
+}
+func Log(_ item: Any) {
+    Log({return item})
 }

@@ -7,17 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		843151A82091C9060092DEE9 /* ApiRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843151A72091C9060092DEE9 /* ApiRouter.swift */; };
 		8474DC8B208459560035855D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474DC8A208459560035855D /* AppDelegate.swift */; };
 		8474DC8D208459560035855D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474DC8C208459560035855D /* ViewController.swift */; };
 		8474DC90208459560035855D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8474DC8E208459560035855D /* Main.storyboard */; };
 		8474DC92208459570035855D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8474DC91208459570035855D /* Assets.xcassets */; };
 		8474DC95208459570035855D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8474DC93208459570035855D /* LaunchScreen.storyboard */; };
 		8474DCA0208459570035855D /* SwiftHTTPManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474DC9F208459570035855D /* SwiftHTTPManagerTests.swift */; };
-		8474DCB2208459A80035855D /* Alamofire+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474DCAB208459A80035855D /* Alamofire+Custom.swift */; };
-		8474DCB4208459A80035855D /* RxHttpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474DCAD208459A80035855D /* RxHttpManager.swift */; };
-		8474DCB6208459A80035855D /* HttpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474DCAF208459A80035855D /* HttpManager.swift */; };
-		8474DCB7208459A80035855D /* ApiRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474DCB0208459A80035855D /* ApiRouter.swift */; };
-		8474DCB8208459A80035855D /* Routerable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474DCB1208459A80035855D /* Routerable.swift */; };
 		D8D58BDFA4D6093AEAB5BBC8 /* Pods_SwiftHTTPManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A4E46407F4A3B074E79B654 /* Pods_SwiftHTTPManager.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +30,7 @@
 /* Begin PBXFileReference section */
 		3A4E46407F4A3B074E79B654 /* Pods_SwiftHTTPManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftHTTPManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		56233B4AF82C1D762E49E8F9 /* Pods-SwiftHTTPManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftHTTPManager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftHTTPManager/Pods-SwiftHTTPManager.debug.xcconfig"; sourceTree = "<group>"; };
+		843151A72091C9060092DEE9 /* ApiRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiRouter.swift; sourceTree = "<group>"; };
 		8474DC87208459560035855D /* SwiftHTTPManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftHTTPManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8474DC8A208459560035855D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8474DC8C208459560035855D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -44,11 +41,6 @@
 		8474DC9B208459570035855D /* SwiftHTTPManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftHTTPManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8474DC9F208459570035855D /* SwiftHTTPManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftHTTPManagerTests.swift; sourceTree = "<group>"; };
 		8474DCA1208459570035855D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8474DCAB208459A80035855D /* Alamofire+Custom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire+Custom.swift"; sourceTree = "<group>"; };
-		8474DCAD208459A80035855D /* RxHttpManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxHttpManager.swift; sourceTree = "<group>"; };
-		8474DCAF208459A80035855D /* HttpManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpManager.swift; sourceTree = "<group>"; };
-		8474DCB0208459A80035855D /* ApiRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiRouter.swift; sourceTree = "<group>"; };
-		8474DCB1208459A80035855D /* Routerable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Routerable.swift; sourceTree = "<group>"; };
 		997F40EB80107EF6147EB2A3 /* Pods-SwiftHTTPManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftHTTPManager.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftHTTPManager/Pods-SwiftHTTPManager.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,7 +74,6 @@
 		8474DC7E208459560035855D = {
 			isa = PBXGroup;
 			children = (
-				8474DCAA208459860035855D /* NetWork */,
 				8474DC89208459560035855D /* SwiftHTTPManager */,
 				8474DC9E208459570035855D /* SwiftHTTPManagerTests */,
 				8474DC88208459560035855D /* Products */,
@@ -105,6 +96,7 @@
 			children = (
 				8474DC8A208459560035855D /* AppDelegate.swift */,
 				8474DC8C208459560035855D /* ViewController.swift */,
+				843151A72091C9060092DEE9 /* ApiRouter.swift */,
 				8474DC8E208459560035855D /* Main.storyboard */,
 				8474DC91208459570035855D /* Assets.xcassets */,
 				8474DC93208459570035855D /* LaunchScreen.storyboard */,
@@ -120,18 +112,6 @@
 				8474DCA1208459570035855D /* Info.plist */,
 			);
 			path = SwiftHTTPManagerTests;
-			sourceTree = "<group>";
-		};
-		8474DCAA208459860035855D /* NetWork */ = {
-			isa = PBXGroup;
-			children = (
-				8474DCAB208459A80035855D /* Alamofire+Custom.swift */,
-				8474DCAF208459A80035855D /* HttpManager.swift */,
-				8474DCB1208459A80035855D /* Routerable.swift */,
-				8474DCAD208459A80035855D /* RxHttpManager.swift */,
-				8474DCB0208459A80035855D /* ApiRouter.swift */,
-			);
-			path = NetWork;
 			sourceTree = "<group>";
 		};
 		90B5A70CD7AC701244078125 /* Pods */ = {
@@ -269,6 +249,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SwiftHTTPManager/Pods-SwiftHTTPManager-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/MANetWork/MANetWork.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -276,6 +257,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MANetWork.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -308,11 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8474DC8D208459560035855D /* ViewController.swift in Sources */,
-				8474DCB6208459A80035855D /* HttpManager.swift in Sources */,
-				8474DCB7208459A80035855D /* ApiRouter.swift in Sources */,
-				8474DCB8208459A80035855D /* Routerable.swift in Sources */,
-				8474DCB4208459A80035855D /* RxHttpManager.swift in Sources */,
-				8474DCB2208459A80035855D /* Alamofire+Custom.swift in Sources */,
+				843151A82091C9060092DEE9 /* ApiRouter.swift in Sources */,
 				8474DC8B208459560035855D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

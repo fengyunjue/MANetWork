@@ -1,21 +1,28 @@
 PODS:
   - Alamofire (4.7.1)
+  - MANetWork (0.1.0):
+    - Alamofire
+    - RxSwift
+    - SVProgressHUD
+    - SwiftyJSON
   - RxSwift (4.1.2)
   - SVProgressHUD (2.2.5)
   - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
-  - Alamofire
-  - RxSwift
-  - SVProgressHUD
-  - SwiftyJSON
+  - MANetWork (from `.`)
+
+EXTERNAL SOURCES:
+  MANetWork:
+    :path: .
 
 SPEC CHECKSUMS:
   Alamofire: 68d7d521118d49c615a8d2214d87cdf525599d30
+  MANetWork: 0298731e36dc568964fcd0aa6b3ae3f52ba14246
   RxSwift: e49536837d9901277638493ea537394d4b55f570
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 54a719e2bce63ff80a13704b7459abd3952b768a
+PODFILE CHECKSUM: 12f78f026e4cc79e22dd6def658d2ce3381d1bac
 
 COCOAPODS: 1.4.0
