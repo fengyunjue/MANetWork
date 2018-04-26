@@ -15,7 +15,7 @@ import SVProgressHUD
 public final class HttpManager{
     private init(){}
     // 创建单例
-    static let shared = HttpManager()
+    public static let shared = HttpManager()
     // 缓存
     public let urlCache = URLCache.init(memoryCapacity: 4*1024*1024, diskCapacity: 20*1024*1024, diskPath: nil)
     
