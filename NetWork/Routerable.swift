@@ -22,6 +22,8 @@ public protocol Routerable{
     // Optional
     var baseURL: String? {get}
     var defaultParameters: RouterParam {get}
+    var encoding: ParameterEncoding {get}
+    
 }
 
 // MARK: - 验证相关的信息
@@ -33,6 +35,9 @@ extension Routerable {
     /// 通用参数
     public var defaultParameters: RouterParam {
         return [:]
+    }
+    public var encoding: ParameterEncoding {
+        return URLEncoding.default
     }
     /// url
     var url: String {

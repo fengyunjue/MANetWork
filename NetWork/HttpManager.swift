@@ -22,6 +22,7 @@ public final class HttpManager{
     public lazy var alamofireManager: SessionManager = {
         let config = URLSessionConfiguration.default
         config.timeoutIntervalForRequest = 30
+        config.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders
         let session = SessionManager(configuration: config)
         return session
     }()
@@ -55,7 +56,7 @@ extension HttpManager{
         
         let newQueue: DispatchQueue = queue ?? DispatchQueue.global()
         
-        let request = shared.alamofireManager.request(router.url, method: router.method, parameters: router.parameters, encoding: URLEncoding.default, headers: router.headerFields)
+        let request = shared.alamofireManager.request(router.url, method: router.method, parameters: router.parameters, encoding: router.encoding, headers: router.headerFields)
         
         var isEnd = false
         if router.useCache {// 如果使用cache
