@@ -89,6 +89,10 @@ public protocol HttpPlugin {
     func willSend(_ request: DataRequest)
     func didReceive(_ response: DataResponse<JSON>, isShowError: Bool)
 }
+extension HttpPlugin {
+    public func willSend(_ request: DataRequest){}
+    public func didReceive(_ response: DataResponse<JSON>, isShowError: Bool){}
+}
 
 public class NetworkIndicatorPlugin: HttpPlugin {
     // MARK: - 网络指示器
