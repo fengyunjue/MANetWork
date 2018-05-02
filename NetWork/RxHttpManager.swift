@@ -125,8 +125,8 @@ extension ObservableType {
                     })
                 case let .error(error):
                     observer.onError(error)
-                default:
-                    break
+                case .completed:
+                    observer.onCompleted()
                 }
             })
             return Disposables.create {
