@@ -4,13 +4,9 @@ platform :ios, '9.0'
 
 use_frameworks!
 
-target 'SwiftHTTPManager' do
+target 'MANetWorkDemo' do
 
     pod 'MANetWork', :path => '.'
-    #pod 'Alamofire'
-    #pod 'SwiftyJSON'
-    #pod 'SVProgressHUD'
-    #pod 'RxSwift', :inhibit_warnings => true
 end
 
 post_install do |installer|
