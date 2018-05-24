@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'MANetWork'
-    s.version          = '0.1.5'
+    s.version          = '0.1.6'
     s.summary          = 'A short description of MANetWork.'
 
     # This description is used to generate tags and improve search results.
@@ -25,21 +25,27 @@ Pod::Spec.new do |s|
     # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
     s.license          = { :type => 'MIT', :file => 'LICENSE' }
     s.author           = { 'ma772528138@qq.com' => 'ma772528138@qq.com' }
+    #s.source           = { :git => '.', :tag => s.version.to_s }
     s.source           = { :git => 'https://github.com/fengyunjue/MANetWork.git', :tag => s.version.to_s }
     # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
     s.ios.deployment_target = '9.0'
 
-    s.source_files = 'NetWork/**/*'
-
     s.pod_target_xcconfig = {
         'SWIFT_VERSION' => '4.1'
     }
 
-#s.public_header_files = 'NetWork/**/*'
+    s.source_files = 'MANetWork/Routerable.swift', 'MANetWork/Alamofire+Custom.swift', "HttpManager.swift"
+    #s.public_header_files = 'MANetWork/**/*'
+
+    s.subspec 'Rx' do |ss|
+        ss.source_files = "MANetWork/RxHttpManager.swift"
+
+        ss.dependency 'SVProgressHUD'
+        ss.dependency 'RxSwift'
+    end
+
     # s.frameworks = 'UIKit', 'MapKit'
     s.dependency 'Alamofire'
     s.dependency 'SwiftyJSON'
-    s.dependency 'SVProgressHUD'
-    s.dependency 'RxSwift'
 end
