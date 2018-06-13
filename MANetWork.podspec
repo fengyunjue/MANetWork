@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'MANetWork'
-    s.version          = '0.1.6'
+    s.version          = '0.1.7'
     s.summary          = 'A short description of MANetWork.'
 
     # This description is used to generate tags and improve search results.
@@ -35,11 +35,11 @@ Pod::Spec.new do |s|
         'SWIFT_VERSION' => '4.1'
     }
 
-    s.source_files = 'MANetWork/Routerable.swift', 'MANetWork/Alamofire+Custom.swift', "HttpManager.swift"
+    s.source_files = 'MANetWork/Routerable.swift', 'MANetWork/Alamofire+Custom.swift', 'MANetWork/HttpManager.swift'
     #s.public_header_files = 'MANetWork/**/*'
 
     s.subspec 'Rx' do |ss|
-        ss.source_files = "MANetWork/RxHttpManager.swift"
+        ss.source_files = 'MANetWork/RxHttpManager.swift'
 
         ss.dependency 'SVProgressHUD'
         ss.dependency 'RxSwift'
