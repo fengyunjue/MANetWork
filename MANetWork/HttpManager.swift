@@ -116,13 +116,10 @@ public class NetworkIndicatorPlugin: HttpPlugin {
         }
     }
 }
-func Log(_ item: () -> Any) {
+func Log(_ item: Any) {
     #if DEBUG
     if HttpManager.openLog {
-        print(item())
+        print(item)
     }
     #endif
-}
-func Log(_ item: Any) {
-    Log({return item})
 }

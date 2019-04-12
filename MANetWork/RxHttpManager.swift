@@ -13,7 +13,7 @@ import Alamofire
 import SVProgressHUD
 
 public extension Routerable {
-    public var rx_request: Observable<JSON> {
+    var rx_request: Observable<JSON> {
         return HttpManager.rx_requestResult(self)
     }
 }
