@@ -36,8 +36,8 @@ Pod::Spec.new do |s|
     s.source_files = 'MANetWork/Routerable.swift', 'MANetWork/Alamofire+Custom.swift', 'MANetWork/HttpManager.swift','MANetWork/RxHttpManager.swift'
     #s.public_header_files = 'MANetWork/**/*'
 
-    ss.dependency 'SVProgressHUD'
-    ss.dependency 'RxSwift'
+    s.dependency 'SVProgressHUD'
+    s.dependency 'RxSwift'
 
     # s.frameworks = 'UIKit', 'MapKit'
     s.dependency 'Alamofire'
