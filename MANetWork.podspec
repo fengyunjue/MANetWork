@@ -31,9 +31,7 @@ Pod::Spec.new do |s|
 
     s.ios.deployment_target = '9.0'
 
-    s.pod_target_xcconfig = {
-        'SWIFT_VERSION' => '4.1'
-    }
+    s.swift_version = '5.0'
 
     s.source_files = 'MANetWork/Routerable.swift', 'MANetWork/Alamofire+Custom.swift', 'MANetWork/HttpManager.swift'
     #s.public_header_files = 'MANetWork/**/*'
