@@ -37,8 +37,7 @@ Pod::Spec.new do |s|
     #s.public_header_files = 'MANetWork/**/*'
 
     s.subspec 'Rx' do |ss|
-        ss.source_files = 'MANetWork/RxHttpManager.swift'
-
+        ss.source_files = 'MANetWork/Rx/*'
         ss.dependency 'SVProgressHUD'
         ss.dependency 'RxSwift'
     end
