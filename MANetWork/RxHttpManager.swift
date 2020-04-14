@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import RxRelay
 import SwiftyJSON
 import Alamofire
 import SVProgressHUD
@@ -47,7 +48,7 @@ extension HttpManager {
 // MARK: - 添加新的Observable类型
 extension ObservableType {
     /// 显示HUD
-    public func showHUD() -> Observable<Self.E> {
+    public func showHUD() -> Observable<Self.Element> {
         return Observable.create { observer in
             var isEnd = false
             // showHUD
@@ -74,11 +75,11 @@ extension ObservableType {
         }
     }
     /// 绑定成功的值
-    public func bindSuccess(to variable: Variable<E>) -> Disposable {
+    public func bindSuccess(to variable: BehaviorRelay<Element>) -> Disposable {
         return subscribe { event in
             switch event {
             case let .next(element):
-                variable.value = element
+                variable.accept(element)
             case .error(_):
                 break
             case .completed:
@@ -88,7 +89,7 @@ extension ObservableType {
     }
     
     /// 当next或error时执行
-    public func doOnce(on: @escaping ((E?) -> Void)) -> Observable<E> {
+    public func doOnce(on: @escaping ((Element?) -> Void)) -> Observable<Element> {
         return self.do(onNext: { (element) in
             on(element)
         }, onError: { (_) in
@@ -96,7 +97,7 @@ extension ObservableType {
         })
     }
     /// 便利返回数据
-    public static func next(_ element: E) -> Observable<E> {
+    public static func next(_ element: Element) -> Observable<Element> {
         return Observable.create({ (observer) -> Disposable in
             observer.onNext(element)
             observer.onCompleted()

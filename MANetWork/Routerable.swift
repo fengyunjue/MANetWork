@@ -64,12 +64,11 @@ extension Routerable {
 
 extension Routerable {
     @discardableResult
-    public func requestResult(queue: DispatchQueue? = DispatchQueue.global(),isShowError: Bool = true, completionHandler: @escaping (Result<JSON>, Bool) -> Void) -> DataRequest {
+    public func requestResult(queue: DispatchQueue? = DispatchQueue.global(),isShowError: Bool = true, completionHandler: @escaping (AFResult<JSON>, Bool) -> Void) -> DataRequest {
         return HttpManager.requestResult(router: self, queue: queue, isShowError: isShowError, completionHandler: completionHandler)
     }
     @discardableResult
-    public func request(queue: DispatchQueue? = DispatchQueue.global(),isShowError: Bool = true, completionHandler: @escaping (DataResponse<JSON>, Bool) -> Void) -> DataRequest {
+    public func request(queue: DispatchQueue? = DispatchQueue.global(),isShowError: Bool = true, completionHandler: @escaping (AFDataResponse<JSON>, Bool) -> Void) -> DataRequest {
         return HttpManager.request(router: self, queue: queue, isShowError: isShowError, completionHandler: completionHandler)
     }
 }
-

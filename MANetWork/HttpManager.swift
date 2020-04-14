@@ -19,11 +19,14 @@ public final class HttpManager{
     // 缓存
     public let urlCache = URLCache.init(memoryCapacity: 4*1024*1024, diskCapacity: 20*1024*1024, diskPath: nil)
     
-    public lazy var alamofireManager: SessionManager = {
-        let config = URLSessionConfiguration.default
+    public lazy var alamofireManager: Session = {
+        let config = URLSessionConfiguration.af.default
         config.timeoutIntervalForRequest = 30
-        config.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders
-        let session = SessionManager(configuration: config)
+        let monitor = ClosureEventMonitor()
+        monitor.requestDidCompleteTaskWithError = { (request, task, error) in
+            debugPrint(request)
+        }
+        let session = Session(configuration: config, eventMonitors: [monitor])
         return session
     }()
     
@@ -31,6 +34,7 @@ public final class HttpManager{
     
     public static var openLog: Bool = false
 }
+
 // MARK: - 基本网络请求
 extension HttpManager{
     /// 快捷网络请求
@@ -40,7 +44,7 @@ extension HttpManager{
     ///   - queue: 线程
     ///   - completionHandler: 完成的回调,isEnd用于处理带缓存的请求,一般情况会先返回缓存,等请求完成在返回真实数据
     @discardableResult
-    public static func requestResult(router: Routerable, queue: DispatchQueue? = DispatchQueue.global(),isShowError: Bool = true, completionHandler: @escaping (Result<JSON>, Bool) -> Void) -> DataRequest{
+    public static func requestResult(router: Routerable, queue: DispatchQueue? = DispatchQueue.global(),isShowError: Bool = true, completionHandler: @escaping (AFResult<JSON>, Bool) -> Void) -> DataRequest{
         return request(router: router, queue: queue, isShowError: isShowError, completionHandler: { (response, isEnd) in
             completionHandler(response.result, isEnd)
         })
@@ -52,11 +56,10 @@ extension HttpManager{
     ///   - queue: 线程
     ///   - completionHandler: 完成的回调,isEnd用于处理带缓存的请求,一般情况会先返回缓存,等请求完成在返回真实数据
     @discardableResult
-    public static func request(router: Routerable, queue: DispatchQueue? = DispatchQueue.global(),isShowError: Bool = true, completionHandler: @escaping (DataResponse<JSON>, Bool) -> Void) -> DataRequest{
+    public static func request(router: Routerable, queue: DispatchQueue? = DispatchQueue.global(),isShowError: Bool = true, completionHandler: @escaping (AFDataResponse<JSON>, Bool) -> Void) -> DataRequest{
         
         let newQueue: DispatchQueue = queue ?? DispatchQueue.global()
-        
-        let request = shared.alamofireManager.request(router.url, method: router.method, parameters: router.parameters, encoding: router.encoding, headers: router.headerFields)
+        let request = shared.alamofireManager.request(router.url, method: router.method, parameters: router.parameters, encoding: router.encoding, headers: HTTPHeaders(router.headerFields), interceptor: nil, requestModifier: nil)
         
         var isEnd = false
         if router.useCache {// 如果使用cache
@@ -87,11 +90,11 @@ extension HttpManager{
 // MARK: - 网络请求插件
 public protocol HttpPlugin {
     func willSend(_ request: DataRequest)
-    func didReceive(_ response: DataResponse<JSON>, isShowError: Bool)
+    func didReceive(_ response: AFDataResponse<JSON>, isShowError: Bool)
 }
 extension HttpPlugin {
     public func willSend(_ request: DataRequest){}
-    public func didReceive(_ response: DataResponse<JSON>, isShowError: Bool){}
+    public func didReceive(_ response: AFDataResponse<JSON>, isShowError: Bool){}
 }
 
 public class NetworkIndicatorPlugin: HttpPlugin {
@@ -104,13 +107,13 @@ public class NetworkIndicatorPlugin: HttpPlugin {
     public func willSend(_ request: DataRequest) {
         NetworkIndicatorPlugin.NetworkActivityIndicatorVisible(true)
     }
-    public func didReceive(_ response: DataResponse<JSON>, isShowError: Bool = true){
+    public func didReceive(_ response: AFDataResponse<JSON>, isShowError: Bool = true){
         NetworkIndicatorPlugin.NetworkActivityIndicatorVisible(false)
         Log(response.debugDescription)
         if case let .failure(error) = response.result, isShowError{
             if (error as NSError).code != NSURLErrorCancelled {
                 DispatchQueue.main.async {
-                    SVProgressHUD.showError(withStatus: error.localizedDescription)
+                    SVProgressHUD.showError(withStatus: error.errorDescription)
                 }
             }
         }

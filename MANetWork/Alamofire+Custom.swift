@@ -10,6 +10,21 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
+extension AFError {
+    public var errorDescription: String {
+        if case let .responseSerializationFailed(ResponseSerializationFailureReason.customSerializationFailed(error)) = self, let customError = error as? MAError, let description = customError.errorDescription {
+            return description
+        }
+        return "Connect error"
+    }
+    public var errorCode: Int {
+        if case let .responseSerializationFailed(ResponseSerializationFailureReason.customSerializationFailed(error)) = self, let customError = error as? MAError {
+            return customError.errorCode
+        }
+        return 100
+    }
+}
+
 public struct MAError: LocalizedError {
     public var errorDescription: String?
     public var errorCode: Int
@@ -21,50 +36,51 @@ public struct MAError: LocalizedError {
 }
 
 
+public final class DictResponseSerializer: ResponseSerializer {
+    public func serialize(request: URLRequest?, response: HTTPURLResponse?, data: Data?, error: Error?) throws -> JSON {
+        guard error == nil else { throw error! }
 
+        guard var data = data, !data.isEmpty else {
+            guard emptyResponseAllowed(forRequest: request, response: response) else {
+                throw AFError.responseSerializationFailed(reason: .inputDataNilOrZeroLength)
+            }
+            return JSON()
+        }
+
+        data = try dataPreprocessor.preprocess(data)
+        do {
+            let json = try JSON(data: data)
+            let errCode = json["error"].intValue
+            let message = json["message"].stringValue
+            if errCode == 0 {
+                return json
+            }else{
+                let error = AFError.responseSerializationFailed(reason: .customSerializationFailed(error: MAError.init(errorCode: errCode, message: message)))
+                throw error
+            }
+        } catch let error{
+           throw error
+        }
+    }
+}
 // MARK: - Alamofire扩展
 extension DataRequest {
     @discardableResult
     public func responseDict(
-        router: Routerable, queue: DispatchQueue? = nil,
-        completionHandler: @escaping (DataResponse<JSON>) -> Void) -> Self{
+        router: Routerable, queue: DispatchQueue = .main,
+        completionHandler: @escaping (AFDataResponse<JSON>) -> Void) -> Self{
+        response(queue: queue , responseSerializer: DictResponseSerializer(), completionHandler: completionHandler)
         
-        response(queue: queue, responseSerializer: DataResponseSerializer { _, response, data, error in
-            return DataRequest.dealResult(Request.serializeResponseData(response: response, data: data, error: error))
-            }, completionHandler:completionHandler)
         return self
-    }
-    
-    class func dealResult(_ data: Result<Data>) -> Result<JSON> {
-        var result: Result<JSON>! = nil
-        switch  data{
-        case .success(let jsonData):
-            do {
-                let json = try JSON(data: jsonData)
-                let errCode = json["error"].intValue
-                let message = json["message"].stringValue
-                if errCode == 0 {
-                    result = Result.success(json)
-                }else{
-                    let error = MAError.init(errorCode: errCode, message: message)
-                    result = Result.failure(error)
-                }
-            } catch let error{
-                result = Result.failure(error)
-            }
-        case .failure(let error):
-            result =  Result.failure(error)
-        }
-        return result
     }
     
     /// 获取缓存
     ///
     /// - Parameter router: 请求路由
     /// - Returns: 返回结果
-    func cacheRequest(router: Routerable) -> DataResponse<JSON>?  {
+    func cacheRequest(router: Routerable) -> AFDataResponse<JSON>?  {
         if let request = self.request, request.httpMethod?.lowercased() == "get", let cachedReponse = HttpManager.shared.urlCache.cachedResponse(for: request){
-            return DataResponse.init(request: request, response: (cachedReponse.response as! HTTPURLResponse), data: cachedReponse.data, result: DataRequest.dealResult(Result.success(cachedReponse.data)))
+            return AFDataResponse.init(request: request, response: cachedReponse.response as? HTTPURLResponse, data: cachedReponse.data, metrics: nil, serializationDuration: 1, result:  Result.success(try! DictResponseSerializer().serialize(request: nil, response: nil, data: cachedReponse.data, error: nil)))
         }
         return nil
     }
@@ -84,36 +100,6 @@ extension DataResponse {
             }
         }
     }
-    
-    public var debugDescription: String {
-        
-        var output: [String] = []
-        output.append("[Alamofire]")
-        // Request
-        output.append("[Request]:\(self.request?.description ?? "(invalid request)")")
-        if let headers = self.request?.allHTTPHeaderFields {
-            output.append("[Headers]:\(headers.description)")
-        }
-        if let bodyStream = self.request?.httpBodyStream {
-            output.append("[BodyStream]:\(bodyStream.description)")
-        }
-        if let httpMethod = self.request?.httpMethod {
-            output.append("[Method]:\(httpMethod)")
-        }
-        if let body = self.request?.httpBody, let stringOutput = String(data: body, encoding: .utf8) {
-            output.append("[Body]:\(stringOutput)")
-        }
-        output.append("[Data]: \(data?.count ?? 0) bytes")
-        output.append("[Time]: \(timeline.requestDuration)")
-        if let data = data {
-            do {
-                output.append("[Result]: \(try JSON.init(data: data))")
-            }catch {}
-        }else{
-            output.append("[Result]: \(result.value.debugDescription)")
-        }
-        return output.joined(separator: "\n")
-    }
     private func JSONResponseDataFormatter(_ data: Data) -> Data {
         do {
             let dataAsJSON = try JSONSerialization.jsonObject(with: data)
@@ -123,4 +109,17 @@ extension DataResponse {
             return data // fallback to original data if it can't be serialized.
         }
     }
+}
+
+
+extension Result {
+    var isSuccess: Bool {
+        switch self {
+        case .success(_):
+            return true
+        default:
+            return false
+        }
+    }
+    
 }

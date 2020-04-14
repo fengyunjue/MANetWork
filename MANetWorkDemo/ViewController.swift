@@ -9,7 +9,6 @@
 import UIKit
 import RxSwift
 import SwiftyJSON
-//import MANetWork
 
 class ViewController: UIViewController {
 
@@ -18,7 +17,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     @IBAction func tagsAction(_ sender: UIButton) {
